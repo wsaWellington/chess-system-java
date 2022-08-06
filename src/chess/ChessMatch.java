@@ -1,6 +1,9 @@
 package chess;
 
 import boardGame.Board;
+import boardGame.Position;
+import chess.pieces.King;
+import chess.pieces.Rook;
 
 public class ChessMatch {
 
@@ -11,23 +14,18 @@ public class ChessMatch {
 	private boolean checkMate;
 	private ChessPiece enPassantVulnerable;
 	private ChessPiece promoted;
-	
-	
-/*
-	public ChessMatch(int turn, Color currentPlayer, boolean check, boolean checkMate, ChessPiece enPassantVulnerable,
-			ChessPiece promoted) {
-		super();
-		board = new Board(8, 8);
-		this.turn = turn;
-		this.currentPlayer = currentPlayer;
-		this.check = check;
-		this.checkMate = checkMate;
-		this.enPassantVulnerable = enPassantVulnerable;
-		this.promoted = promoted;
-	}*/
+
+	/*
+	 * public ChessMatch(int turn, Color currentPlayer, boolean check, boolean
+	 * checkMate, ChessPiece enPassantVulnerable, ChessPiece promoted) { super();
+	 * board = new Board(8, 8); this.turn = turn; this.currentPlayer =
+	 * currentPlayer; this.check = check; this.checkMate = checkMate;
+	 * this.enPassantVulnerable = enPassantVulnerable; this.promoted = promoted; }
+	 */
 
 	public ChessMatch() {
 		board = new Board(8, 8);
+		initialSetup();
 	}
 
 	public int getTurn() {
@@ -97,6 +95,12 @@ public class ChessMatch {
 		}
 
 		return mat;
+	}
+	
+	private void initialSetup() {
+		board.placePeace(new Rook(board, Color.WHITE), new Position(2, 1));
+		board.placePeace(new Rook(board, Color.BLACK), new Position(0, 4));
+		board.placePeace(new King(board, Color.WHITE), new Position(7, 4));
 	}
 
 }
