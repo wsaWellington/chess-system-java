@@ -29,10 +29,10 @@ public class program {
 			
 			ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
 			}catch (ChessException e) {
-				System.out.println("Mensagem ------" + e.getMessage());
+				System.out.println(e.getMessage());
 				sc.nextLine();
 			} catch (InputMismatchException e) {
-				System.out.println("Mensagem ------ " + e.getMessage());
+				System.out.println(e.getMessage());
 				sc.nextLine();
 			}
 		}
